@@ -10,11 +10,13 @@ const LandingPage = () => {
   return (
     <>
       <div className="landing_container">
+      <div className="landing_page">
         <h1>Welcome to InstaFood 2.0</h1>
         <p>Order delicious food from your favorite restaurants!</p>
         <button className="landing_btn" onClick={() => redirectToParent()}>
           Order Now
         </button>
+      </div>
       </div>
     </>
   );
