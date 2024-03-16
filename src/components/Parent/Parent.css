@@ -1,0 +1,25 @@
+/* Parent.css */
+
+.navbar {
+  background-color: #f8f9fa; /* Set background color */
+}
+
+.navbar-brand img {
+  width: 100px; /* Adjust logo width */
+}
+
+.navbar-toggler {
+  border: none; /* Remove border from toggler */
+}
+
+.navbar-toggler-icon {
+  background-color: #343a40; /* Set color of toggler icon */
+}
+
+.navbar-nav .nav-link {
+  color: #000; /* Set color of nav links */
+}
+
+.navbar-nav .nav-link.disabled {
+  display: none; /* Hide disabled nav link */
+}
