@@ -1,25 +1,59 @@
-/* Parent.css */
-
-.navbar {
-  background-color: #f8f9fa; /* Set background color */
+.parent-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.navbar-brand img {
-  width: 100px; /* Adjust logo width */
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 10px;
 }
 
-.navbar-toggler {
-  border: none; /* Remove border from toggler */
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.navbar-toggler-icon {
-  background-color: #343a40; /* Set color of toggler icon */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
-.navbar-nav .nav-link {
-  color: #000; /* Set color of nav links */
+.card-text {
+  margin-bottom: 5px;
 }
 
-.navbar-nav .nav-link.disabled {
-  display: none; /* Hide disabled nav link */
+.price {
+  font-weight: bold;
+}
+
+.available {
+  color: green;
+}
+
+.unavailable {
+  color: red;
+}
+
+.quantity-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+}
+
+.order-btn {
+  width: 100%;
+  margin-top: 10px;
 }

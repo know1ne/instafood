@@ -1,25 +1,10 @@
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [userType, setUserType] = useState("");
-
-  const handleUserTypeChange = (e) => {
-    setUserType(e.target.value);
-  };
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
-  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -41,31 +26,9 @@ const Login = () => {
           <h1>Login</h1>
         </div>
         <div className="login_text">
-          Don't have an account? <Link to="/signup">Sign Up</Link> here
+          Don&apos;t have an account? <Link to="/signup">Sign Up</Link> here
         </div>
         <form className="login_form" onSubmit={handleSubmit}>
-          {/* Name Field */}
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-            className="form_input"
-            required
-          />
-
-          {/* Phone Number Field */}
-          <label htmlFor="phoneNumber">Phone Number</label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            value={phoneNumber}
-            onChange={handlePhoneNumberChange}
-            className="form_input"
-            required
-          />
-
           {/* Email Field */}
           <label htmlFor="email">Email</label>
           <input

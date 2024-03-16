@@ -1,37 +1,40 @@
-
-import { Link } from "react-router-dom";
-import "./Signup.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Signup.css';
 
 const Signup = () => {
-  const [userType, setUserType] = useState("");
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleUserTypeChange = (e) => {
-    setUserType(e.target.value);
-  };
+  const handleNameChange = (e) => setName(e.target.value);
+  const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission or validation here
+    try {
+      const response = await fetch('http://localhost:3001/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, phoneNumber, email, password }),
+      });
+      if (response.ok) {
+        setSuccess('User created successfully');
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError('Failed to create user');
+    }
   };
 
   return (
@@ -44,21 +47,6 @@ const Signup = () => {
           Already a member? <Link to="/login">Login</Link> here
         </div>
         <form className="login_form" onSubmit={handleSubmit}>
-          {/* Signup Role Field */}
-          <label htmlFor="role">Signup Role</label>
-          <select
-            name="role"
-            id="role"
-            className="form_input"
-            value={userType}
-            onChange={handleUserTypeChange}
-            required
-          >
-            <option value="">Select User Type</option>
-            <option value="customer">Customer</option>
-            <option value="restaurant">Restaurant</option>
-          </select>
-
           {/* Name Field */}
           <label htmlFor="name">Name</label>
           <input
@@ -103,9 +91,11 @@ const Signup = () => {
             required
           />
 
-          
-          {/* Forgot Password Link */}
-          <Link to="/forgot-password">Forgot Password?</Link>
+          {/* Error Message */}
+          {error && <div className="error_message">{error}</div>}
+
+          {/* Success Message */}
+          {success && <div className="success_message">{success}</div>}
 
           {/* Submit Button */}
           <button type="submit">Sign Up</button>

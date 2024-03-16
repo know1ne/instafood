@@ -1,4 +1,10 @@
 module.exports = {
+    env: {
+      node: true,
+    },
+    globals: {
+      process: true,
+    },
   root: true,
   env: { browser: true, es2020: true },
   extends: [
